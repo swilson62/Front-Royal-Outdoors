@@ -5,6 +5,7 @@ The Django application "frontroyaloutdoors" is to be my submission for the final
 This application is designed to be installed in any Docker environment. Loading can be accomplished on any machine with Docker installed, by running the command `docker-compose up -d` from the Django root directory. This will create 2 applications in Docker, a Django Web server, and a PostgreSQL server. Then you simply wait until the output from the command `docker-compose logs` indicates both Docker applications have started up successfully, and browse to the address `0.0.0.0:8000` in your favorite browser.
 
 Included with this Django application is the `docker-compose.yml` file. This file defines the settings for both applications, as well as how to get everything started. A couple of interesting things to point out about this file include:
+
     - Django super user is automatically created with the credentials {username:admin, password:Pass@123}. Recommend changing this after load.
     - Defines PostgreSQL environment that uses a more secure password encryption (scram-sha-256) than default, as well as an environment variable which contains the "postgres" user password to be used.
     - Defines commands run to start the Django server. This includes:
@@ -14,6 +15,7 @@ Included with this Django application is the `docker-compose.yml` file. This fil
         - The `startFrontRoyalOutdoors.sh` script, which defines how the Django web server is to start.
         
 The `startFrontRoyalOutdoors.sh` script runs the following commands:
+    
     - Runs `python3 manage.py migrate` to migrate the database from the `models.py` file, into the now running PostgreSQL database (DB) server.
     - Runs `python3 manage.py createsuperuser --noinput --username admin --email anonymous@example.com` to create the super user. This command uses a password supplied to the environment by the previous `docker-compose.yml` file.
     - Runs `python3 manage.py runscript populate`. This command uses the `runscript` extension supplied by installing the pip module `django-extensions`. This is used run the Python script `<project_root>/scripts/populate.py`. This script populates the Trip_Detail, Water_Craft, & Trip_Package tables in the DB. Info about running a script in the Django environment can be found on:
