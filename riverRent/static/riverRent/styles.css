@@ -1,0 +1,121 @@
+/* Base CSS file adapted from CS50W-2018 Project 1 */
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+
+    /* set color - added by sdw */
+    color: red;
+    text-shadow: -1px -1px black, 1px -1px black, -1px 1px black, -1px -1px black;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+/* SDW - Below are additions added to base CSS file */
+div > ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background: url("/static/riverRent/front-royal-canoe.jpg") no-repeat;
+    background-size: cover;
+    background-color: blanchedalmond;
+    background-position: 0px 132px;
+}
+
+a {
+    color: orange
+}
+
+.badge {
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+#orderButton {
+    color: red;
+}
+
+#shoppingCartPriceTotal {
+    color: red;
+}
+
+footer {
+    font-size: small;
+    text-align: center;
+    width: 100%;
+    color: red;
+    text-shadow: -.5px -.5px black, .5px -.5px black, -.5px .5px black, -.5px -.5px black;
+}
+
+.boatCount {
+    text-align: center;
+    width: 2em;
+    display: inline-block;
+}
+
+#priceTotalDom {
+    text-align: center;
+}
+
+#startTimeDetail {
+    font-size: small;
+}
+
+#infoIcon {
+    color: green;
+    pointer-events: none;
+}
+
+/* @media class definition used to disable items in large view ports */
+@media (min-width: 525px) {
+    .smallViewport {
+        display: none;
+    }
+}
+
+/* @media class definition used to disable items in small view ports */
+@media (max-width: 524px) {
+    .largeViewport {
+        display: none;
+    }
+}

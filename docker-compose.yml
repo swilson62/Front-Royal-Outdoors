@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    db:
+        image: postgres
+        environment:
+            POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+            POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
+            POSTGRES_PASSWORD: "PV!BbZyR98mr3#j@"
+            POSTGRES_DB: frontroyaloutdoors
+
+    web:
+        build: .
+        depends_on:
+            - db
+        volumes:
+            - .:/usr/src/app
+        ports:
+            - "8000:8000"
+        environment:
+            DJANGO_SUPERUSER_PASSWORD: "Pass@123"
+        command: ["./wait-for-it.sh", "db:5432", "--", "./startFrontRoyalOutdoors.sh"]

@@ -1,0 +1,96 @@
+{% extends "riverRent/layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Trip Categories
+{% endblock %}
+
+{% block head %}
+    <!-- Local JS calls -->
+    <script type="text/javascript" src="{% static 'riverRent/trip.js' %}"></script>
+
+    <!-- flatpickr  datetime picker CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+{% endblock head %}
+
+{% block main %}
+    <!-- Page headings -->
+    <div class="main-site-template">
+        <h4>Shenandoah Kayak, Canoe, Raft, and Tube Trips</h4>
+        <h1>Choose An Adventure</h1>
+
+        <!-- Add a little space -->
+        <div style="margin-top: 20px;"></div>
+
+        <h4><u>Trip {{ tripDetails.Trip_Number }} Details:</u></h5>
+        <p>Put In: {{ tripDetails.Put_In }}
+        <br>Take Out: {{ tripDetails.Take_Out }}
+        <br>River Distance: {{ tripDetails.Distance }} miles
+        <br>Time: {{ tripDetails.Time_Desc }}
+        <br>Level: Recommended at {{ tripDetails.Level }}
+        <br>Description: {{ tripDetails.Description }}</p>
+
+        <!-- Add a little space -->
+        <div style="margin-top: 20px;"></div>
+
+        <h4><u>Water Craft Prices</u></h4>
+        <ul>
+            {% for package in tripPackages %}
+                <li>{{ package.Water_Craft_Type.Type }} - ${{ package.Price }} per</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Add a little space -->
+        <div style="margin-top: 20px;"></div>
+
+        {% if user.is_authenticated %}
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#bookABoat">Book-A-Boat</button>
+        {% else %}
+            <p>Please login to Book-A-Boat</p>
+            <button type="button" class="btn btn-warning disabled" role="button" aria-disabled="true">Book-A-Boat</button>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block modal %}
+    <!-- book-A-Boat modal -->
+    <div class="modal fade" id="bookABoat" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- bookABoat modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4><span class="glyphicon glyphicon-list-alt"></span>Trip #{{ tripDetails.Trip_Number }}: {{ tripDetails.Put_In }} to {{ tripDetails.Take_Out }}</h4>
+                    <button type="button" class="close ToppingsModalCancel" id="modalExit" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <h6>Select Rentals:</h6>
+                            <p>{% for package in tripPackages %}
+                                <a href="javascript:subtractSelection({{ package.Water_Craft_Type.id }})" class="subtractSelections" id="subtractSelection{{ package.Water_Craft_Type.id }}"><i class="far fa-minus-square"></i></a>
+                                <span class="boatCount" id="selectionCount{{ package.Water_Craft_Type.id }}">0</span>
+                                <a href="javascript:addSelection({{ package.Water_Craft_Type.id }})" class="addSelections" id="addSelection{{ package.Water_Craft_Type.id }}"><i class="far fa-plus-square"></i>
+                                </a>&emsp;{{ package.Water_Craft_Type.Type }}<span class="float-right" id="availCount{{ package.Water_Craft_Type.id }}"></span><br>
+                            {% endfor %}</p>
+                            <h6 id="calendarHdr"></h6>
+                            <div id="calendarDOM"></div>
+                            <div id="timeHdr"></div>
+                            <div id="timeDom"></div>
+                            <div id="priceTotalDom"></div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-success btn-default" id="addToCart">Add To Cart</button>
+                    <button type="reset" class="btn btn-danger btn-default" id="modalCancel" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

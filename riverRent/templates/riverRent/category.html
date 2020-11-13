@@ -1,0 +1,29 @@
+{% extends "riverRent/layout.html" %}
+
+{% block title %}
+    Trip Categories
+{% endblock %}
+
+{% block main %}
+    <div class="main-site-template">
+        <h4>Shenandoah Kayak, Canoe, Raft, and Tube Trips</h4>
+        <h1>Choose An Adventure</h1>
+
+        <!-- Add a little space -->
+        <div style="margin-top: 20px;"></div>
+
+        <ul class="h5 largeViewport">
+            {% for trip in trips %}
+                <li><a href = "/trip/{{ trip.Trip_Number }}">Trip {{ trip.Trip_Number }} - {{ trip.Distance }} Miles
+                    </a> (Recommended at {{ trip.Level }})</li>
+            {% endfor %}
+        </ul>
+
+        <ul class="h5 smallViewport">
+            {% for trip in trips %}
+                <li><a href = "/trip/{{ trip.Trip_Number }}">Trip {{ trip.Trip_Number }} - {{ trip.Distance }} Miles
+                    </a> ({{ trip.Level }})</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

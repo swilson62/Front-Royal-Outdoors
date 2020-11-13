@@ -1,0 +1,40 @@
+{% extends "riverRent/layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Shopping Cart
+{% endblock %}
+
+{% block head %}
+    <!-- Local JS calls -->
+    <script type="text/javascript" src="{% static 'riverRent/cart.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+    <!-- json_script template tags for incoming JSON to be used in JS -->
+    {{ boatAvailJson|json_script:"boatAvailJson" }}
+
+    <!-- Page headings -->
+    <div class="main-site-template">
+        <h1 id="mainHeadings">Shopping Cart</h1>
+        <h6 id="mainHeadings">Current User Name: {{ user.username }}</h6>
+        <h6 id="mainHeadings">Clicking item removes from Cart</h6>
+
+        <!-- Add a little space -->
+        <div style="margin-top: 20px;"></div>
+
+        <!-- Un-ordered list of links for available items -->
+        <ul id="shoppingCartItemList"></ul>
+
+        <!-- Shopping cart price total-->
+        <p id="shoppingCartPriceTotal"></p>
+
+        <!-- Add a little space -->
+        <div style="margin-top: 30px;"></div>
+
+        <!-- Order button -->
+        <a class="btn btn-lg btn-dark" id="orderButton" href="#" role="button">Order</a>
+
+    </div>
+{% endblock %}
