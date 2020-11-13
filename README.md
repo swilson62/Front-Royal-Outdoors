@@ -1,4 +1,4 @@
-$CS50W 2020 Final Capstone Submission - Front Royal Outdoors
+#CS50W 2020 Final Capstone Submission - Front Royal Outdoors
  
 The Django application "frontroyaloutdoors" is to be my submission for the final "Capstone" project in the CS50W 2020 class. It is my adaptation of the [https://frontroyaloutdoors.com/](https://frontroyaloutdoors.com/) website. This website is owned by a friend of mine who runs a local river outfitting business. The pictures were used with permission of [frontroyaloutdoors.com](https://frontroyaloutdoors.com/), and cannot be used without written permission. The web site allows users to reserve boats of various available types, for a given trip, on a given date.
 
