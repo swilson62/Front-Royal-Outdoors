@@ -37,8 +37,9 @@ Upon opening the home page, the user is presented a page with a Navigation bar a
 Clicking on any of these trip categories, takes you to a page that lists all of the trips from that category, as well as river level recommendations. Clicking on any of these trips takes you to a page that describes the trip, and the various trip packages available. Each trip package is for a different water craft type (Canoe, Solo Kayak, Tandem Kayak, etc...). Each trip package has a related price. There is a "Book-A-Boat" button at the bottom of this page, but this is not enabled until the user is authenticated.
 
 Clicking on the Nav bar "Register" link, takes you to a registration page. Registration requires a username, first name, last name, email address, password, password confirmation, and telephone number. The telephone number input is checked by the `phonenumbers` module installed with `pip install django-phonenumber-field[phonenumbers]`. Info about a way to handle phone numbers came from:
-    [https://stackoverflow.com/questions/19130942/whats-the-best-way-to-store-phone-number-in-django-models](https://stackoverflow.com/questions/19130942/whats-the-best-way-to-store-phone-number-in-django-models)  which referenced: 
-    [https://github.com/stefanfoulis/django-phonenumber-field](https://github.com/stefanfoulis/django-phonenumber-field)
+    
+[https://stackoverflow.com/questions/19130942/whats-the-best-way-to-store-phone-number-in-django-models](https://stackoverflow.com/questions/19130942/whats-the-best-way-to-store-phone-number-in-django-models)  which referenced: 
+[https://github.com/stefanfoulis/django-phonenumber-field](https://github.com/stefanfoulis/django-phonenumber-field)
 
 After registration is complete, the user is left logged in on the home page. One can also login with credentials using the `Login` Nav bar link. Once logged in, the right side Nav bar links change to show a Shopping Cart, and a link used to "Logout". There is a red badge, that shows the number of items that are currently saved in the users Shopping Cart. The users shopping cart uses local storage.
 
