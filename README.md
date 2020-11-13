@@ -54,5 +54,5 @@ Another server side check occurs in `views.py`. This happens when one user selec
 
 This page has a few adjustments to make it mobile-responsive. Most of these adjustments are made using @media directives in the `styles.css` file. I use these to do things like adjust the text being displayed in a few strategic areas throughout the site.
 
-Please enjoy this submission.
+Thanks for your consideration. Please enjoy this submission.
 
