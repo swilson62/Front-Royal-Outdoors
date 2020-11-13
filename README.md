@@ -27,7 +27,7 @@ The `startFrontRoyalOutdoors.sh` script runs the following commands:
     pip module `django-extensions`. This is used run the Python script `<project_root>/scripts/populate.py`. This script 
     populates the Trip_Detail, Water_Craft, & Trip_Package tables in the DB. Info about running a script in the Django 
     environment can be found on:
-        https://django-extensions.readthedocs.io/en/latest/] (see <project_root>/scripts/populate.py` for details).
+        https://django-extensions.readthedocs.io/en/latest/ (see <project_root>/scripts/populate.py` for details).
     - Runs `python3 manage.py runserver 0.0.0.0:8000` to start the Django server.
     
 I my opinion, this Docker setup, on top of a Django web server, PostgreSQL database, that also uses JavaScript, makes this more complicated than anything I created for any previous projects. I would also mention that this DB design is at least as complex, if not more so. The Python and JavaScript code used for this was a lot more complicated in many ways than anything I have done before. There are a lot of possible failure modes for which I had to create error handling code in both JavaScript & Python. I can only hope I have found them all!
