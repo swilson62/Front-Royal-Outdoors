@@ -13,8 +13,8 @@ Included with this Django application is the `docker-compose.yml` file. This fil
     - Defines commands run to start the Django server. This includes:
         - The `wait-for-it.sh db:5432` script to control the startup order. This makes Django wait to start until the 
         PostgreSQL server is up. This was discovered on the following sites:
-            [https://docs.docker.com/compose/startup-order/](https://docs.docker.com/compose/startup-order/)
-            [https://github.com/Eficode/wait-for](https://github.com/Eficode/wait-for)
+            https://docs.docker.com/compose/startup-order/
+            https://github.com/Eficode/wait-for
         - The `startFrontRoyalOutdoors.sh` script, which defines how the Django web server is to start.
         
 The `startFrontRoyalOutdoors.sh` script runs the following commands:
@@ -25,8 +25,9 @@ The `startFrontRoyalOutdoors.sh` script runs the following commands:
     user. This command uses a password supplied to the environment by the previous `docker-compose.yml` file.
     - Runs `python3 manage.py runscript populate`. This command uses the `runscript` extension supplied by installing the 
     pip module `django-extensions`. This is used run the Python script `<project_root>/scripts/populate.py`. This script 
-    populates the Trip_Detail, Water_Craft, & Trip_Package tables in the DB. Info about running a script in the Django environment can be found on:
-        [https://django-extensions.readthedocs.io/en/latest/](https://django-extensions.readthedocs.io/en/latest/) (see <project_root>/scripts/populate.py` for details).
+    populates the Trip_Detail, Water_Craft, & Trip_Package tables in the DB. Info about running a script in the Django 
+    environment can be found on:
+        https://django-extensions.readthedocs.io/en/latest/] (see <project_root>/scripts/populate.py` for details).
     - Runs `python3 manage.py runserver 0.0.0.0:8000` to start the Django server.
     
 I my opinion, this Docker setup, on top of a Django web server, PostgreSQL database, that also uses JavaScript, makes this more complicated than anything I created for any previous projects. I would also mention that this DB design is at least as complex, if not more so. The Python and JavaScript code used for this was also a lot more complicated in many ways than anything I have done before. There are a lot of possible failure modes for which I had to create error handling code in both JavaScript & Python. I can only hope I have found them all!
